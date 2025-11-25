@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const baseURL = process.env.NUXT_APP_BASE_URL || "/";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
@@ -6,4 +8,8 @@ export default defineNuxtConfig({
   css: ["~/assets/css/reset.css", "~/assets/css/main.css"],
 
   modules: ["@nuxt/hints", "@nuxt/icon", "@nuxt/fonts", "@nuxt/eslint", "@nuxt/image"],
+
+  app: {
+    baseURL,
+  },
 });
