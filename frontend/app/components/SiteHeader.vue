@@ -19,79 +19,24 @@
         <span class="menu-toggle__bar menu-toggle__bar--bottom"></span>
       </button>
 
-      <nav
-        id="site-nav"
-        class="site-nav"
-        :class="{ 'site-nav--open': isMenuOpen }"
-        aria-label="Основная навигация"
-      >
-        <button type="button" @click="handleNavClick('services')">Услуги</button>
-        <button type="button" @click="handleNavClick('consulting')">Консультации</button>
-        <button type="button" @click="handleNavClick('benefits')">Преимущества</button>
-        <button type="button" @click="handleNavClick('contact')">Контакты</button>
-        <button type="button" class="primary-button site-nav__cta" @click="handleNavClick('contact')">
-          Связаться
-        </button>
+      <nav id="site-nav" class="site-nav" :class="{ 'site-nav--open': isMenuOpen }" aria-label="Основная навигация">
+        <a href="#services">Услуги</a>
+        <a href="#consulting">Консультации</a>
+        <a href="#benefits">Преимущества</a>
+        <a href="#contact">Контакты</a>
       </nav>
 
-      <button type="button" class="primary-button site-header__cta" @click="handleNavClick('contact')">
-        Связаться
-      </button>
+      <a class="primary-button site-header__cta" href="#contact">Связаться</a>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue';
-
-const scrollToSection = (id: string) => {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-};
-
 const isMenuOpen = ref(false);
-
-const closeMenu = () => {
-  isMenuOpen.value = false;
-};
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
-
-const handleNavClick = (id: string) => {
-  scrollToSection(id);
-  closeMenu();
-};
-
-const handleResize = () => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  if (window.innerWidth >= 768) {
-    closeMenu();
-  }
-};
-
-onMounted(() => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  window.addEventListener('resize', handleResize);
-});
-
-onBeforeUnmount(() => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  window.removeEventListener('resize', handleResize);
-});
 </script>
 
 <style scoped>
@@ -150,7 +95,7 @@ onBeforeUnmount(() => {
   z-index: 5;
 }
 
-.site-nav button {
+.site-nav a {
   border: none;
   background: transparent;
   color: var(--slate-600);
@@ -159,7 +104,7 @@ onBeforeUnmount(() => {
   text-align: left;
 }
 
-.site-nav button:hover {
+.site-nav a:hover {
   color: var(--emerald-600);
 }
 
@@ -195,15 +140,15 @@ onBeforeUnmount(() => {
   display: block;
 }
 
-.menu-toggle[aria-expanded='true'] .menu-toggle__bar--top {
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar--top {
   transform: translateY(4px) rotate(45deg);
 }
 
-.menu-toggle[aria-expanded='true'] .menu-toggle__bar--middle {
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar--middle {
   opacity: 0;
 }
 
-.menu-toggle[aria-expanded='true'] .menu-toggle__bar--bottom {
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar--bottom {
   transform: translateY(-4px) rotate(-45deg);
 }
 
