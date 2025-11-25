@@ -32,11 +32,11 @@
 
 <script setup lang="ts">
 const scrollToSection = (id: string) => {
-  if (typeof document === 'undefined') {
+  if (typeof document === "undefined") {
     return;
   }
 
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 };
 </script>
 
@@ -60,7 +60,7 @@ const scrollToSection = (id: string) => {
 }
 
 .hero__overlay--image {
-  background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600');
+  background-image: url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600");
   background-size: cover;
   background-position: center;
   opacity: 0.07;

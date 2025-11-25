@@ -11,7 +11,8 @@
         </div>
         <h2 id="consulting-title" class="section-title consulting__title">Консультации для собственников и УК</h2>
         <p class="consulting__description">
-          Профессиональная помощь в вопросах управления многоквартирным домом и организации деятельности управляющих компаний
+          Профессиональная помощь в вопросах управления многоквартирным домом и организации деятельности управляющих
+          компаний
         </p>
       </div>
 
@@ -28,9 +29,7 @@
       </div>
 
       <div class="consulting__cta-wrapper">
-        <button type="button" class="consulting__cta" @click="scrollToSection('contact')">
-          Получить консультацию
-        </button>
+        <button type="button" class="consulting__cta" @click="scrollToSection('contact')">Получить консультацию</button>
       </div>
     </div>
   </section>
@@ -39,29 +38,30 @@
 <script setup lang="ts">
 const consultingServices = [
   {
-    title: 'Переход на новую УК',
-    description: 'Поможем организовать собрание собственников, подготовить документы и провести процедуру смены управляющей компании'
+    title: "Переход на новую УК",
+    description:
+      "Поможем организовать собрание собственников, подготовить документы и провести процедуру смены управляющей компании",
   },
   {
-    title: 'Создание ТСЖ/ТСН',
-    description: 'Консультации по созданию товарищества собственников и оформлению необходимой документации'
+    title: "Создание ТСЖ/ТСН",
+    description: "Консультации по созданию товарищества собственников и оформлению необходимой документации",
   },
   {
-    title: 'Аудит текущего управления',
-    description: 'Проверим качество работы текущей УК, выявим нарушения и поможем защитить ваши права'
+    title: "Аудит текущего управления",
+    description: "Проверим качество работы текущей УК, выявим нарушения и поможем защитить ваши права",
   },
   {
-    title: 'Ведение деятельности УК',
-    description: 'Обучение и консультации для начинающих управляющих компаний по всем аспектам работы'
-  }
+    title: "Ведение деятельности УК",
+    description: "Обучение и консультации для начинающих управляющих компаний по всем аспектам работы",
+  },
 ];
 
 const scrollToSection = (id: string) => {
-  if (typeof document === 'undefined') {
+  if (typeof document === "undefined") {
     return;
   }
 
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 };
 </script>
 

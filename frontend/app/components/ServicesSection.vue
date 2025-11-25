@@ -3,9 +3,7 @@
     <div class="content-container">
       <div class="services__heading">
         <p class="section-title">Наши услуги</p>
-        <p class="section-description">
-          Комплексное обслуживание для безопасности и комфорта жителей
-        </p>
+        <p class="section-description">Комплексное обслуживание для безопасности и комфорта жителей</p>
       </div>
 
       <div class="services__grid">
@@ -24,29 +22,29 @@
 <script setup lang="ts">
 const services = [
   {
-    icon: 'lucide:zap',
-    title: 'Электрика',
-    description: 'Профессиональное обслуживание электросетей, ремонт и замена освещения в подъездах и на территории',
-    gradient: 'linear-gradient(135deg, #f59e0b, #ea580c)'
+    icon: "lucide:zap",
+    title: "Электрика",
+    description: "Профессиональное обслуживание электросетей, ремонт и замена освещения в подъездах и на территории",
+    gradient: "linear-gradient(135deg, #f59e0b, #ea580c)",
   },
   {
-    icon: 'lucide:droplets',
-    title: 'Сантехника',
-    description: 'Быстрое устранение протечек, ремонт водопровода и канализации в общедомовых помещениях',
-    gradient: 'linear-gradient(135deg, #3b82f6, #06b6d4)'
+    icon: "lucide:droplets",
+    title: "Сантехника",
+    description: "Быстрое устранение протечек, ремонт водопровода и канализации в общедомовых помещениях",
+    gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
   },
   {
-    icon: 'lucide:sparkles',
-    title: 'Уборка подъездов',
-    description: 'Регулярная поддержка чистоты в подъездах: влажная уборка, дезинфекция, мытье окон',
-    gradient: 'linear-gradient(135deg, #10b981, #14b8a6)'
+    icon: "lucide:sparkles",
+    title: "Уборка подъездов",
+    description: "Регулярная поддержка чистоты в подъездах: влажная уборка, дезинфекция, мытье окон",
+    gradient: "linear-gradient(135deg, #10b981, #14b8a6)",
   },
   {
-    icon: 'lucide:home',
-    title: 'Благоустройство территории',
-    description: 'Уход за придомовой территорией, уборка снега, озеленение, вывоз мусора',
-    gradient: 'linear-gradient(135deg, #22c55e, #84cc16)'
-  }
+    icon: "lucide:home",
+    title: "Благоустройство территории",
+    description: "Уход за придомовой территорией, уборка снега, озеленение, вывоз мусора",
+    gradient: "linear-gradient(135deg, #22c55e, #84cc16)",
+  },
 ];
 </script>
 

@@ -12,7 +12,7 @@
             <Icon name="lucide:phone" size="32" />
           </div>
           <p class="contact-card__label">Телефон</p>
-          <a class="contact-card__value" href="tel:+74951234567">+7 (495) 123-45-67</a>
+          <a class="contact-card__value" href="tel:+998950775220">+998 95 077 52 20</a>
         </article>
 
         <article class="contact-card">
@@ -20,7 +20,7 @@
             <Icon name="lucide:mail" size="32" />
           </div>
           <p class="contact-card__label">Email</p>
-          <a class="contact-card__value" href="mailto:info@cityrise.ru">info@cityrise.ru</a>
+          <a class="contact-card__value" href="mailto:akarimhodjaev@gmail.com">akarimhodjaev@gmail.com</a>
         </article>
 
         <article class="contact-card">
@@ -28,7 +28,7 @@
             <Icon name="lucide:map-pin" size="32" />
           </div>
           <p class="contact-card__label">Адрес офиса</p>
-          <p class="contact-card__value">г. Москва, ул. Примерная, д. 1</p>
+          <p class="contact-card__value">г. Ташкент</p>
         </article>
       </div>
     </div>

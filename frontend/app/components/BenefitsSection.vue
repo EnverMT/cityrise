@@ -22,25 +22,25 @@
 <script setup lang="ts">
 const benefits = [
   {
-    icon: 'lucide:shield',
-    title: 'Надежность',
-    description: 'Опытная команда профессионалов'
+    icon: "lucide:shield",
+    title: "Надежность",
+    description: "Опытная команда профессионалов",
   },
   {
-    icon: 'lucide:clock-4',
-    title: 'Оперативность',
-    description: 'Быстрое реагирование на заявки'
+    icon: "lucide:clock-4",
+    title: "Оперативность",
+    description: "Быстрое реагирование на заявки",
   },
   {
-    icon: 'lucide:check-circle-2',
-    title: 'Качество',
-    description: 'Гарантия на все виды работ'
+    icon: "lucide:check-circle-2",
+    title: "Качество",
+    description: "Гарантия на все виды работ",
   },
   {
-    icon: 'lucide:users',
-    title: 'Индивидуальный подход',
-    description: 'Учитываем особенности каждого дома'
-  }
+    icon: "lucide:users",
+    title: "Индивидуальный подход",
+    description: "Учитываем особенности каждого дома",
+  },
 ];
 </script>
 

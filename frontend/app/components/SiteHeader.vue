@@ -6,14 +6,35 @@
         <span>Management</span>
       </div>
 
-      <nav class="site-nav" aria-label="Основная навигация">
-        <button type="button" @click="scrollToSection('services')">Услуги</button>
-        <button type="button" @click="scrollToSection('consulting')">Консультации</button>
-        <button type="button" @click="scrollToSection('benefits')">Преимущества</button>
-        <button type="button" @click="scrollToSection('contact')">Контакты</button>
+      <button
+        type="button"
+        class="menu-toggle"
+        :aria-expanded="isMenuOpen ? 'true' : 'false'"
+        aria-label="Открыть меню"
+        aria-controls="site-nav"
+        @click="toggleMenu"
+      >
+        <span class="menu-toggle__bar menu-toggle__bar--top"></span>
+        <span class="menu-toggle__bar menu-toggle__bar--middle"></span>
+        <span class="menu-toggle__bar menu-toggle__bar--bottom"></span>
+      </button>
+
+      <nav
+        id="site-nav"
+        class="site-nav"
+        :class="{ 'site-nav--open': isMenuOpen }"
+        aria-label="Основная навигация"
+      >
+        <button type="button" @click="handleNavClick('services')">Услуги</button>
+        <button type="button" @click="handleNavClick('consulting')">Консультации</button>
+        <button type="button" @click="handleNavClick('benefits')">Преимущества</button>
+        <button type="button" @click="handleNavClick('contact')">Контакты</button>
+        <button type="button" class="primary-button site-nav__cta" @click="handleNavClick('contact')">
+          Связаться
+        </button>
       </nav>
 
-      <button type="button" class="primary-button site-header__cta" @click="scrollToSection('contact')">
+      <button type="button" class="primary-button site-header__cta" @click="handleNavClick('contact')">
         Связаться
       </button>
     </div>
@@ -21,6 +42,8 @@
 </template>
 
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+
 const scrollToSection = (id: string) => {
   if (typeof document === 'undefined') {
     return;
@@ -28,6 +51,47 @@ const scrollToSection = (id: string) => {
 
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 };
+
+const isMenuOpen = ref(false);
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+};
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const handleNavClick = (id: string) => {
+  scrollToSection(id);
+  closeMenu();
+};
+
+const handleResize = () => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  if (window.innerWidth >= 768) {
+    closeMenu();
+  }
+};
+
+onMounted(() => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  window.addEventListener('resize', handleResize);
+});
+
+onBeforeUnmount(() => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  window.removeEventListener('resize', handleResize);
+});
 </script>
 
 <style scoped>
@@ -46,6 +110,7 @@ const scrollToSection = (id: string) => {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 0;
+  position: relative;
 }
 
 .site-logo {
@@ -59,9 +124,30 @@ const scrollToSection = (id: string) => {
 }
 
 .site-nav {
-  display: none;
-  align-items: center;
-  gap: 2rem;
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 1rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-0.5rem);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: -1;
+}
+
+.site-nav--open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  z-index: 5;
 }
 
 .site-nav button {
@@ -70,10 +156,55 @@ const scrollToSection = (id: string) => {
   color: var(--slate-600);
   font-weight: 600;
   transition: color 0.3s ease;
+  text-align: left;
 }
 
 .site-nav button:hover {
   color: var(--emerald-600);
+}
+
+.site-nav__cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.menu-toggle:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.menu-toggle__bar {
+  width: 1.25rem;
+  height: 2px;
+  background-color: var(--slate-900);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: block;
+}
+
+.menu-toggle[aria-expanded='true'] .menu-toggle__bar--top {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded='true'] .menu-toggle__bar--middle {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded='true'] .menu-toggle__bar--bottom {
+  transform: translateY(-4px) rotate(-45deg);
 }
 
 .site-header__cta {
@@ -81,12 +212,30 @@ const scrollToSection = (id: string) => {
 }
 
 @media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
   .site-nav {
-    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    z-index: 1;
   }
 
   .site-header__cta {
     display: inline-flex;
+  }
+
+  .site-nav__cta {
+    display: none;
   }
 }
 </style>

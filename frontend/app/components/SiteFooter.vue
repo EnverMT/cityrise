@@ -3,7 +3,7 @@
     <div class="content-container site-footer__inner">
       <h3 class="site-footer__title">Cityrise Management</h3>
       <p class="site-footer__subtitle">Профессиональное управление многоквартирными домами</p>
-      <p class="site-footer__note">© 2024 Cityrise Management. Все права защищены.</p>
+      <p class="site-footer__note">© 2025 Cityrise Management. Все права защищены.</p>
     </div>
   </footer>
 </template>
