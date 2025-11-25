@@ -1,0 +1,132 @@
+:root {
+	--slate-50: #f8fafc;
+	--slate-100: #e2e8f0;
+	--slate-400: #94a3b8;
+	--slate-600: #475569;
+	--slate-700: #334155;
+	--slate-900: #0f172a;
+	--emerald-50: #ecfdf5;
+	--emerald-100: #bbf7d0;
+	--emerald-500: #10b981;
+	--emerald-600: #059669;
+	--emerald-700: #047857;
+	--blue-50: #eff6ff;
+	--blue-500: #3b82f6;
+	--purple-500: #8b5cf6;
+	--card-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+	--radius-lg: 24px;
+	--radius-xl: 32px;
+	--page-max-width: 1200px;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+	background: var(--slate-50);
+	color: var(--slate-900);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font: inherit;
+	cursor: pointer;
+}
+
+.content-container {
+	width: min(var(--page-max-width), calc(100% - 48px));
+	margin: 0 auto;
+}
+
+.section-title {
+	font-size: clamp(2.25rem, 3vw, 3rem);
+	font-weight: 700;
+	color: var(--slate-900);
+}
+
+.section-description {
+	font-size: 1.25rem;
+	color: var(--slate-600);
+	max-width: 720px;
+	margin: 0.75rem auto 0;
+	line-height: 1.6;
+}
+
+.primary-button {
+	border: none;
+	border-radius: 999px;
+	background: var(--emerald-600);
+	color: #fff;
+	font-weight: 600;
+	padding: 0.75rem 2.5rem;
+	transition: background 0.3s ease, transform 0.3s ease;
+	box-shadow: 0 15px 35px rgba(16, 185, 129, 0.25);
+}
+
+.primary-button:hover {
+	background: var(--emerald-700);
+	transform: translateY(-2px);
+}
+
+.secondary-button {
+	border-radius: 999px;
+	border: 2px solid #cbd5f5;
+	background: transparent;
+	color: var(--slate-700);
+	font-weight: 600;
+	padding: 0.75rem 2.5rem;
+	transition: background 0.3s ease, color 0.3s ease;
+}
+
+.secondary-button:hover {
+	background: rgba(15, 23, 42, 0.05);
+}
+
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1.5rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--slate-700);
+}
+
+.gradient-text {
+	background: linear-gradient(90deg, var(--emerald-600), #2563eb);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+
+.section-spacing {
+	padding: clamp(3rem, 4vw, 6rem) 0;
+}
+
+.card-grid {
+	display: grid;
+	gap: 2rem;
+}
+
+@media (min-width: 768px) {
+	.card-grid.two-columns {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.card-grid.three-columns {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.card-grid.four-columns {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
